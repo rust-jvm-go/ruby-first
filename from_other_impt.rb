@@ -36,3 +36,16 @@ if 0
 else
   puts "0 is false"
 end
+
+# Blocks are Objects, they just don’t know it yet
+def block(&the_block)
+  # Inside here, the_block is the block passed to the method
+  the_block # return the block
+end
+adder = block { |a, b| a + b }
+# adder is now a Proc object
+adder.class # => Proc
+adder.method('block')
+
+method(:puts).call 'puts is an object!'
+# => puts is an object!
